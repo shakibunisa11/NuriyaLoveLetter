@@ -1,0 +1,442 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#5c1839">
+<title>প্রিয় নুরিয়ার জন্য 💌</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Noto Serif Bengali", "Nirmala UI", serif;
+  color: white;
+  background:
+    linear-gradient(rgba(35, 5, 23, .70), rgba(35, 5, 23, .82)),
+    url("nuriya.jpg") center center / cover fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 14px;
+  overflow-x: hidden;
+}
+
+.container {
+  width: min(100%, 700px);
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.top-title {
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #ffd1e2;
+  margin-bottom: 12px;
+}
+
+.main-title {
+  font-size: clamp(24px, 5vw, 36px);
+  color: #ffe5ef;
+  text-shadow: 0 0 20px #ff8db8;
+  margin: 10px 0;
+}
+
+.subtitle {
+  color: #ffdae8;
+  font-size: 15px;
+}
+
+.envelope-area {
+  margin: 55px auto 25px;
+  width: min(310px, 85vw);
+  perspective: 900px;
+}
+
+.envelope {
+  height: 200px;
+  position: relative;
+  background: #b93c6c;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 15px 45px #0008;
+  transition: transform .3s;
+}
+
+.envelope:hover {
+  transform: translateY(-5px);
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background: #a52b5b;
+  border-radius: 5px;
+}
+
+.envelope-paper {
+  position: absolute;
+  left: 8%;
+  width: 84%;
+  height: 80%;
+  top: 5%;
+  background: #fff2f6;
+  color: #9e2858;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: transform .8s, top .8s;
+}
+
+.envelope-flap {
+  position: absolute;
+  inset: 0;
+  background: #dc6894;
+  clip-path: polygon(0 0, 100% 0, 50% 60%);
+  transform-origin: top center;
+  transition: transform .8s;
+  z-index: 4;
+}
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  background: #c74a79;
+  clip-path: polygon(0 100%, 0 0, 50% 55%, 100% 0, 100% 100%);
+  z-index: 3;
+}
+
+.envelope-heart {
+  position: absolute;
+  top: 66px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 38px;
+  z-index: 5;
+  transition: opacity .3s;
+}
+
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.envelope.open .envelope-paper {
+  transform: translateY(-95px);
+}
+
+.envelope-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 15px;
+  z-index: 6;
+  color: white;
+  font-size: 16px;
+}
+
+.open-hint {
+  color: #ffe0ec;
+  font-size: 15px;
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  50% { opacity: .55; }
+}
+
+.letter {
+  display: none;
+  text-align: left;
+  color: #56263d;
+  background: rgba(255, 247, 250, .97);
+  border: 1px solid #ffc3d8;
+  border-radius: 20px;
+  padding: clamp(20px, 5vw, 38px);
+  box-shadow: 0 15px 60px #0008, 0 0 25px #ffb5d0;
+  line-height: 2;
+  animation: letterAppear 1s ease both;
+  overflow-wrap: anywhere;
+}
+
+@keyframes letterAppear {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.letter h1 {
+  text-align: center;
+  color: #a82b5d;
+  font-size: clamp(25px, 5vw, 34px);
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+
+.letter h2 {
+  text-align: center;
+  color: #b43b6b;
+  font-size: clamp(17px, 4vw, 22px);
+  line-height: 1.8;
+  margin: 0 0 28px;
+}
+
+.letter p {
+  margin: 18px 0;
+  font-size: clamp(15px, 3.8vw, 17px);
+}
+
+.letter strong {
+  color: #92224e;
+}
+
+.signature {
+  text-align: right;
+  font-size: clamp(19px, 4vw, 23px);
+  font-weight: bold;
+  color: #a82b5d;
+  margin-top: 28px;
+}
+
+.end-hearts {
+  text-align: center;
+  font-size: 27px;
+  margin-top: 20px;
+}
+
+.close-button {
+  display: block;
+  margin: 28px auto 0;
+  border: none;
+  border-radius: 30px;
+  background: #a82b5d;
+  color: white;
+  font-family: inherit;
+  font-size: 15px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background .3s, transform .3s;
+}
+
+.close-button:hover {
+  background: #791b42;
+  transform: scale(1.03);
+}
+
+.footer {
+  margin-top: 28px;
+  color: #ffd6e5;
+  font-size: 13px;
+}
+
+.heart {
+  position: fixed;
+  bottom: -45px;
+  color: #ff8bb6;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  text-shadow: 0 0 12px #ff6ca5;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  15% { opacity: .8; }
+  85% { opacity: .7; }
+  100% {
+    transform: translateY(-115vh) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    background-attachment: scroll;
+    padding: 24px 12px;
+  }
+
+  .envelope {
+    height: 175px;
+  }
+
+  .envelope-heart {
+    top: 57px;
+  }
+
+  .letter {
+    border-radius: 14px;
+    padding: 20px 17px;
+  }
+
+  .letter p {
+    line-height: 1.95;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="container">
+
+  <div class="top-title">A SPECIAL LETTER FROM MY HEART</div>
+  <h1 class="main-title">শুধু তোমার জন্য, নুরিয়া ❤️</h1>
+  <p class="subtitle">কিছু অনুভূতি শুধু মনের মানুষটির জন্যই থাকে... 💌</p>
+
+  <div class="envelope-area" id="envelopeArea">
+    <div class="envelope" id="envelope" onclick="openLetter()"
+         role="button" tabindex="0"
+         aria-label="নুরিয়ার চিঠি খুলুন">
+      <div class="envelope-back"></div>
+      <div class="envelope-paper">প্রিয় নুরিয়া 💗</div>
+      <div class="envelope-flap"></div>
+      <div class="envelope-front"></div>
+      <div class="envelope-heart">❤️</div>
+      <div class="envelope-label">একটি ভালোবাসার চিঠি 💌</div>
+    </div>
+  </div>
+
+  <div class="open-hint" id="openHint">
+    💗 চিঠিটি খুলতে খামের ওপর ক্লিক করো 💗
+  </div>
+
+  <article class="letter" id="letter">
+
+    <h1>💌 প্রিয় নুরিয়া,</h1>
+    <h2>আমার মায়ার মানুষ, আমার অনেক আপন একজন ❤️</h2>
+
+    <p>জানো নুরিয়া, তোমাকে নিয়ে লিখতে বসলে বুঝতে পারি, মনের ভেতরে কত কথা জমে আছে। কিছু কথা কখনো মুখে বলা হয় না, কিছু কথা অভিমানের আড়ালে হারিয়ে যায়, আর কিছু অনুভূতি আছে যেগুলো বোঝানোর জন্য পৃথিবীর সব শব্দও হয়তো যথেষ্ট নয়।</p>
+
+    <p>তবুও আজ লিখতে বসলাম। তোমাকে আমার মনের কথাগুলো একটু সুন্দর করে বলব বলে। হয়তো সামনাসামনি সব কথা গুছিয়ে বলতে পারি না, হয়তো রাগের সময় এমন কিছু বলে ফেলি, যা তোমার মন খারাপ করে দেয়। কিন্তু বিশ্বাস করো, তোমাকে কষ্ট দেওয়ার জন্য আমি কখনো কিছু করতে চাই না। আমার কোনো কথা বা আচরণে তোমার মন খারাপ হয়ে থাকলে, আমি সত্যিই দুঃখিত। ❤️</p>
+
+    <p><strong>নুরিয়া, আমাদের মাঝে এখন হয়তো একটু অভিমান চলছে, কিছু ভুল বোঝাবুঝি হচ্ছে।</strong> কখনো আমার মন খারাপ হয়, কখনো তোমার হয়। কখনো দুজনেই হয়তো নিজের কথাটা বোঝাতে চাই, কিন্তু অন্যজনের মনের কথাটা ঠিকভাবে বুঝতে পারি না। তখন ছোট্ট একটা বিষয়ও অনেক বড় হয়ে যায়।</p>
+
+    <p>কিন্তু আমি চাই না, আমাদের অভিমান আমাদের ভালোবাসার চেয়ে বড় হয়ে উঠুক। আমি চাই না, রাগের মুহূর্তে বলা কিছু কথা আমাদের সুন্দর স্মৃতিগুলোকে ম্লান করে দিক। আমি চাই, আমরা দুজন একে অপরের কথা মন দিয়ে শুনি, ভুল হলে বুঝিয়ে বলি, আর কষ্ট পেলে চুপ করে দূরে সরে না গিয়ে নিজেদের অনুভূতিগুলো ভাগ করে নিই।</p>
+
+    <p>জানো, আমাদের একসঙ্গে কাটানো ছোট ছোট মুহূর্তগুলো আমার কাছে কতটা প্রিয়? সেই রিকশায় পাশাপাশি বসে পথ চলা, একসঙ্গে কাটানো সময়, নদীর ধারে বসে কফি খাওয়ার সেই সুন্দর মুহূর্তগুলো—ভাবলে এখনো মনে হয়, সাধারণ কিছু সময়ও প্রিয় মানুষের সঙ্গে কাটালে কত অসাধারণ হয়ে ওঠে! 🌸</p>
+
+    <p>আমি জানি না, ভবিষ্যতে আমাদের জীবনে কত ব্যস্ততা আসবে, কত কঠিন সময় পার করতে হবে। কিন্তু আমি চাই, সেই সময়গুলোতে আমরা একে অপরকে বোঝার চেষ্টা করি। শুধু হাসির দিনে নয়, মন খারাপের দিনেও যেন একে অপরের অনুভূতির মূল্য দিতে পারি।</p>
+
+    <p><strong>তোমাকে ভালোবাসি বলেই তোমার কাছে আমার প্রত্যাশা আছে, আবার তোমার অনুভূতিগুলো বোঝার দায়িত্বও আমার আছে।</strong> আমি চাই না, আমার ভালোবাসা তোমার কাছে কোনো চাপ হয়ে উঠুক। আমি চাই, তুমি আমার সঙ্গে কথা বললে স্বস্তি পাও, নিজের মনের কথা নির্ভয়ে বলতে পারো, আর কোনো বিষয়ে কষ্ট পেলে আমাকে সেটা বুঝিয়ে বলতে পারো।</p>
+
+    <p>আমি নিজেও শিখতে চাই—কীভাবে আরও ধৈর্য ধরতে হয়, কীভাবে রাগের সময় চুপ থেকে পরিস্থিতি শান্ত করতে হয়, কীভাবে শুধু নিজের কষ্ট নয়, তোমার কষ্টটাও বুঝতে হয়। কারণ একটা সম্পর্ক শুধু ভালোবাসার কথা বললেই সুন্দর হয় না; সম্পর্ক সুন্দর হয় যত্নে, সম্মানে, বিশ্বাসে আর দুজনের আন্তরিক চেষ্টায়।</p>
+
+    <p>নুরিয়া, তোমার কাছে আমার একটা ছোট্ট চাওয়া—আমরা যেন আমাদের অভিমানগুলোকে একে অপরের বিরুদ্ধে না দাঁড় করাই। বরং সেগুলো থেকে শিখি, কোথায় আমাদের আরও ভালোভাবে একে অপরকে বোঝা দরকার। আমার ভুল হলে আমাকে বুঝিয়ে দিও। তোমার কোনো কথায় আমার কষ্ট হলে আমিও যেন শান্তভাবে তোমাকে বলতে পারি। আমরা যেন কেউ কাউকে ছোট না করি, বরং একে অপরকে আরও ভালো মানুষ হতে সাহায্য করি।</p>
+
+    <p>তোমার সঙ্গে আমার আরও অনেক সুন্দর স্মৃতি তৈরি করার ইচ্ছা আছে। আরও অনেক গল্প, অনেক হাসি, অনেক সাধারণ বিকেল, অনেক ছোট ছোট আনন্দ—যেগুলো হয়তো অন্য কারও কাছে খুব সাধারণ, কিন্তু আমাদের কাছে বিশেষ হয়ে থাকবে। 🌷</p>
+
+    <p>আর একটা কথা জানো? তোমাকে প্রতিদিন নতুন করে ভালোবাসার কথা বলার চেয়েও আমার কাছে গুরুত্বপূর্ণ হলো, প্রতিদিনের আচরণে তোমাকে সম্মান করা, তোমার কথা শোনা, তোমার অনুভূতিকে গুরুত্ব দেওয়া। আমি চাই, আমার ভালোবাসা শুধু কথায় নয়, আমার ব্যবহারেও তুমি অনুভব করো।</p>
+
+    <p>যদি কখনো আমাদের মাঝে দূরত্ব তৈরি হয়, আমি চাই আমরা সেই দূরত্বের কারণটা বুঝতে চেষ্টা করি। যদি কোনো ভুল হয়, আমরা তা স্বীকার করার সাহস রাখি। আর যদি মন খারাপ হয়, তাহলে এমন একটা সময় খুঁজে নিই, যখন শান্তভাবে বসে দুজন দুজনের কথা বলতে পারব।</p>
+
+    <p>আমি জানি, সবকিছু একদিনে ঠিক হয় না। অভিমানও এক মুহূর্তে চলে যায় না। তাই তোমার কাছে কোনো তাড়াহুড়া নেই, কোনো জোর নেই। শুধু চাই, তুমি আমার মনের কথাগুলো জানো—তুমি আমার কাছে গুরুত্বপূর্ণ, তোমার অনুভূতিগুলো গুরুত্বপূর্ণ, আর আমাদের সম্পর্কটাকে সুন্দর রাখার জন্য আমি আন্তরিকভাবে চেষ্টা করতে চাই।</p>
+
+    <p><strong>প্রিয় নুরিয়া, তুমি আমার জীবনের এমন একজন মানুষ, যার সঙ্গে কাটানো ছোট্ট মুহূর্তও আমার মনে জায়গা করে নেয়।</strong> তোমার হাসি আমার ভালো লাগে, তোমার সঙ্গে কথা বলতে ভালো লাগে, তোমার সঙ্গে ভবিষ্যতের সুন্দর সময়গুলোর কথা ভাবতেও ভালো লাগে। আর সেই ভালো লাগার মানুষটার সঙ্গে যখন অভিমান হয়, তখন মনটা স্বাভাবিকভাবেই খারাপ হয়।</p>
+
+    <p>তবুও আমি চাই, আমাদের গল্পটা শুধু অভিমান আর মন খারাপের গল্প হয়ে না থাকুক। আমাদের গল্পে থাকুক বোঝাপড়া, ক্ষমা চাইতে পারার সাহস, ক্ষমা করার আন্তরিকতা, একে অপরের প্রতি সম্মান আর সুন্দরভাবে পাশে থাকার ইচ্ছা।</p>
+
+    <p>আল্লাহর কাছে দোয়া করি, তিনি যেন আমাদের দুজনকে সঠিকভাবে একে অপরকে বুঝতে সাহায্য করেন, আমাদের মনে ধৈর্য দেন, আর আমাদের জন্য যা কল্যাণকর, সেই পথ সহজ করে দেন। 🤲❤️</p>
+
+    <p>শেষে শুধু এটুকুই বলব—তোমাকে নিয়ে আমার অনুভূতিগুলো সত্যি, আর তোমাকে আরও ভালোভাবে বুঝতে শেখার ইচ্ছাটাও সত্যি। আমি চাই, আমরা দুজন মিলে এমন একটা সম্পর্ক গড়ে তুলি, যেখানে ভালোবাসার পাশাপাশি থাকবে শান্তি, বিশ্বাস, সম্মান আর মনের কথা বলার নিরাপদ জায়গা।</p>
+
+    <p><strong>অনেক অভিমানের মাঝেও তোমার জন্য আমার মায়াটা রয়ে গেছে। আর আমি চাই, সেই মায়ার যত্ন আমরা দুজন মিলে নিই।</strong> ❤️</p>
+
+    <p>ভালো থেকো, নিজের যত্ন নিও। আর মনে রেখো, তোমার অনুভূতিগুলোও আমার কাছে অনেক মূল্যবান।</p>
+
+    <p style="text-align:center; font-weight:bold; color:#a83260;">
+      অনেক অনেক ভালোবাসা ও মায়া রইল তোমার জন্য। 💌
+    </p>
+
+    <div class="signature">— তোমার সাকিব ❤️</div>
+    <div class="end-hearts">💗 💌 💗</div>
+
+    <button class="close-button" onclick="closeLetter()">
+      চিঠি আবার বন্ধ করো 💌
+    </button>
+
+  </article>
+
+  <div class="footer">Made with love, just for you ❤️</div>
+
+</main>
+
+<script>
+const envelope = document.getElementById("envelope");
+const envelopeArea = document.getElementById("envelopeArea");
+const letter = document.getElementById("letter");
+const openHint = document.getElementById("openHint");
+
+let isOpening = false;
+
+function openLetter() {
+  if (isOpening || letter.style.display === "block") return;
+
+  isOpening = true;
+  envelope.classList.add("open");
+  openHint.style.display = "none";
+
+  setTimeout(() => {
+    envelopeArea.style.display = "none";
+    letter.style.display = "block";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    isOpening = false;
+  }, 700);
+}
+
+function closeLetter() {
+  letter.style.display = "none";
+  envelopeArea.style.display = "block";
+  envelope.classList.remove("open");
+  openHint.style.display = "block";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+envelope.addEventListener("keydown", function(event) {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    openLetter();
+  }
+});
+
+for (let i = 0; i < 22; i++) {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.textContent = ["♥", "♡", "❤", "💗"][i % 4];
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDelay = Math.random() * 10 + "s";
+  heart.style.animationDuration = (7 + Math.random() * 8) + "s";
+  heart.style.fontSize = (14 + Math.random() * 20) + "px";
+  document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
